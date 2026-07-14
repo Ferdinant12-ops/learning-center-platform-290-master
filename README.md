@@ -11,7 +11,7 @@ and an Anti-Corruption Layer between the `contracts` and `entitlement` bounded c
 - Java 26
 - Spring Boot 4
 - Spring Data JPA (Hibernate)
-- PostgreSQL (schema `whirlpool_os`)
+- PostgreSQL or MySQL (schema `whirlpool_os`), selectable via Spring profile
 - SpringDoc OpenAPI (Swagger UI)
 - Lombok
 - Maven
@@ -25,9 +25,22 @@ and an Anti-Corruption Layer between the `contracts` and `entitlement` bounded c
 - `POST /api/v1/claims` - registers a claim (validates the policy exists and its coverage is not expired). Returns `201 Created`.
 - `GET /api/v1/policies` - returns the stored policies (with calculated coverage status).
 
+## Database selection (Spring profiles)
+Both drivers are bundled. Choose the database in `src/main/resources/application.properties`:
+```properties
+spring.profiles.active=postgres   # or: mysql
+```
+- `postgres` -> `application-postgres.properties` (jdbc:postgresql://localhost:5432/whirlpool_os)
+- `mysql` -> `application-mysql.properties` (jdbc:mysql://localhost:3306/whirlpool_os)
+
+> The Whirlpool exam statement requests **MySQL**; set `spring.profiles.active=mysql` for that delivery.
+> Adjust the datasource `username` / `password` in the corresponding profile file.
+
 ## Running
-1. Create the PostgreSQL database and schema: `CREATE DATABASE whirlpool_os;` then, connected to it, `CREATE SCHEMA IF NOT EXISTS whirlpool_os;`
-2. Adjust `spring.datasource.username` / `password` in `src/main/resources/application.properties`.
+1. Create the schema in the chosen database:
+   - PostgreSQL: `CREATE DATABASE whirlpool_os;` then, connected to it, `CREATE SCHEMA IF NOT EXISTS whirlpool_os;`
+   - MySQL: `CREATE DATABASE whirlpool_os;` (schema and database are the same)
+2. Set `spring.profiles.active` and adjust credentials in the matching profile file.
 3. Run the application (IntelliJ IDEA, or `mvn spring-boot:run`).
 4. API: `http://localhost:8290` - Swagger UI: `http://localhost:8290/swagger-ui/index.html`
 

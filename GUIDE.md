@@ -139,6 +139,13 @@ spring.messages.encoding=UTF-8
 > [!NOTE]
 > Cambie `postgres/postgres` por sus credenciales reales de PostgreSQL.
 
+> [!TIP]
+> **El proyecto trae soporte para las dos bases de datos** mediante Spring Profiles. En
+> `application.properties` la línea `spring.profiles.active=postgres` decide cuál usar. Cambie a
+> `mysql` y arrancará con `application-mysql.properties` (MySQL en `jdbc:mysql://localhost:3306/whirlpool_os`).
+> Como **este examen (Whirlpool) pide MySQL**, para la entrega use `spring.profiles.active=mysql`.
+> Los dos drivers ya están en el `pom.xml`.
+
 ## 4. Estructura de paquetes
 
 Dentro de `src/main/java/com/whirlpool/care/platform/u20241a290`:
