@@ -29,7 +29,7 @@ and an Anti-Corruption Layer between the `contracts` and `entitlement` bounded c
 1. Create the MySQL database (or rely on `createDatabaseIfNotExist=true`): `CREATE DATABASE whirlpool_os;`
 2. Adjust `spring.datasource.username` / `password` in `src/main/resources/application.properties`.
 3. Run the application (IntelliJ IDEA, or `mvn spring-boot:run`).
-4. API: `http://localhost:8096` - Swagger UI: `http://localhost:8096/swagger-ui/index.html`
+4. API: `http://localhost:8290` - Swagger UI: `http://localhost:8290/swagger-ui/index.html`
 
 ## Internationalization
 Error messages are localized via the `Accept-Language` header (`en` / `es`).

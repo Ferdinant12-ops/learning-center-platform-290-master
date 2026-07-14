@@ -36,7 +36,7 @@ public class OpenApiConfiguration {
                 .version(this.applicationVersion)
                 .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0.html")));
         openApi.servers(List.of(
-                new Server().url("http://localhost:8096").description("Local Development Environment")
+                new Server().url("http://localhost:8290").description("Local Development Environment")
         ));
         return openApi;
     }

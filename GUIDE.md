@@ -116,7 +116,7 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.hibernate.naming.physical-strategy=com.whirlpool.care.platform.u20241a290.shared.infrastructure.persistence.jpa.configuration.strategy.SnakeCaseWithPluralizedTablePhysicalNamingStrategy
 
 # Puerto de escucha del API
-server.port=8096
+server.port=8290
 
 # Valores tomados desde el pom.xml
 documentation.application.description=@project.description@
@@ -285,20 +285,20 @@ Ejecute el proyecto desde IntelliJ IDEA (botón Run sobre la clase principal) o 
 mvn spring-boot:run
 ```
 
-API disponible en `http://localhost:8096` y Swagger en `http://localhost:8096/swagger-ui/index.html`.
+API disponible en `http://localhost:8290` y Swagger en `http://localhost:8290/swagger-ui/index.html`.
 
 ## 11. Probar los endpoints
 
 ### GET policies
 
 ```bash
-curl http://localhost:8096/api/v1/policies
+curl http://localhost:8290/api/v1/policies
 ```
 
 ### POST claim (política activa -> 201 Created)
 
 ```bash
-curl -X POST http://localhost:8096/api/v1/claims \
+curl -X POST http://localhost:8290/api/v1/claims \
   -H "Content-Type: application/json" \
   -H "Accept-Language: en" \
   -d "{ \"policyId\": 1, \"issueDescription\": \"Compressor not cooling\", \"claimStatus\": \"OPEN\", \"reportedAt\": \"2026-07-13 10:30:00\" }"
@@ -319,7 +319,7 @@ Respuesta esperada (HTTP 201):
 ### POST claim sobre política EXPIRED (policyId 3 -> 422)
 
 ```bash
-curl -X POST http://localhost:8096/api/v1/claims \
+curl -X POST http://localhost:8290/api/v1/claims \
   -H "Content-Type: application/json" \
   -H "Accept-Language: es" \
   -d "{ \"policyId\": 3, \"issueDescription\": \"Motor issue\", \"claimStatus\": \"OPEN\", \"reportedAt\": \"2026-07-13 10:30:00\" }"
