@@ -1,4 +1,4 @@
-# Whirlpool Certified Care - Service Management API (`eb11990u20241a290`)
+# Certified Care - Service Management API 
 
 ## Overview
 `eb11990u20241a290` is a RESTful API for Whirlpool's Certified Care platform. It manages the
